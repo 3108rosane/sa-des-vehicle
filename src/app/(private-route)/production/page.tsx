@@ -1,4 +1,4 @@
-import Header from "@/components/PagModelo"
+import Header from "@/components/mainMenu"
 import "./styles.css"
 
 export default function Production() {

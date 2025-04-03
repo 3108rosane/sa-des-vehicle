@@ -1,9 +1,15 @@
-import Header from "@/components/PagModelo"
+import Header from "@/components/mainMenu"
 import "./styles.css"
 
 export default function Maintenance(){
 
     return(
-        <div></div>
+        <div className="first">
+           <Header/>
+           <div className="second">
+
+           </div>
+
+        </div>
     )
     }
