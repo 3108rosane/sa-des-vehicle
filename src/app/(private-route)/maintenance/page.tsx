@@ -6,11 +6,7 @@ export default function Maintenance(){
 
     return(
         <div className="first">
-           <MainMenu/>
-           <div className="second">
-
-           </div>
-
+         
         </div>
     )
     }

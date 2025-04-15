@@ -1,0 +1,8 @@
+.first-stock{
+    display: flex;
+    flex-direction: column;
+}
+.second-stock{
+    display: flex;
+    flex-direction: row;
+}
