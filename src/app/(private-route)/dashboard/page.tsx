@@ -7,8 +7,7 @@ export default function Dashboard(){
 
     return (
         <div>
-            <MainMenu />
-            <div className="first1.1">
+            <div className="first1-1">
                 <h1>Auto care</h1>
                 <h2>dashboard</h2>
                 <div className="second1.0">
@@ -35,10 +34,11 @@ export default function Dashboard(){
                         <h2>Qualidade</h2>
                     </div>
 
-
-
                 </div>
+
+
             </div>
+
         </div>
     )
 }
