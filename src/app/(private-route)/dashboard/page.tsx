@@ -2,7 +2,8 @@ import "./styles.css"
 import MainMenu from "@/components/mainMenu"
 import { FcSupport, FcAutomotive, FcDataConfiguration, FcSurvey } from "react-icons/fc";
 
-export default function Deshboard() {
+
+export default function Dashboard(){
 
     return (
         <div>
