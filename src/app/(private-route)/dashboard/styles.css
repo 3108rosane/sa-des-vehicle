@@ -1,11 +1,29 @@
-.menu-1 {
+.menu-container-dashboard {
+    text-align: center;
     display: flex;
-    flex-direction: row;
+    flex: 1;
+    flex-direction: column;
 }
 
-.first1-1 {
+.menu-dashboard {
     display: grid;
-    background-color: blue;
-    padding: 16px;
-   
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    margin-top: 20px;
+    gap: 16px;
+}
+
+.menu-item-dashboard {
+    background-color: #ccc;
+    border-radius: 50%;
+    height: 250px;
+    display: flex;
+    flex: 1;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.menu-item-dashboard svg {
+    width: 32px;
+    height: 32px;
 }
