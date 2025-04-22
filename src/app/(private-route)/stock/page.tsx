@@ -3,6 +3,7 @@
 import { TextField, Checkbox, FormControl, InputLabel, Select, MenuItem } from '@mui/material';
 import "./styles.css"
 import { DataGrid, GridColDef } from '@mui/x-data-grid';
+import { ButtonGlobal } from '@/components/Button';
 
 
 const linhasEstoque = [
@@ -50,14 +51,21 @@ const columns: GridColDef<(typeof linhasEstoque)[number]>[] = [
     {
         field: 'motor',
         headerName: 'Motor',
+        width: 300,
     },
     {
         field: 'pneu',
         headerName: 'Pneu',
+        width: 300,
     },
     {
-        field: 'optional',
-        headerName: 'Opcionais',
+        field: 'carcaca',
+        headerName: 'Carcaca',
+        width: 300,
+    },
+    {
+        field: 'Chassi',
+        headerName: 'Chassi',
         width: 300,
     },
 ];
@@ -92,7 +100,7 @@ export default function Stock() {
                     </Select>
                 </FormControl>
                 <TextField label="Quantidade" variant="outlined" type='number' />
-                <button>Cadastrar</button>
+                <ButtonGlobal text="CADASTRAR" handle={() => { }} />
             </fieldset>
 
             <fieldset className='secao'>
@@ -106,7 +114,7 @@ export default function Stock() {
                     </Select>
                 </FormControl>
                 <TextField label="Quantidade" variant="outlined" type='number' />
-                <button>Cadastrar</button>
+                <ButtonGlobal text="CADASTRAR" handle={() => { }} />
             </fieldset>
 
             <fieldset className='secao'>
@@ -122,14 +130,14 @@ export default function Stock() {
                     </Select>
                 </FormControl>
                 <TextField label="Quantidade" variant="outlined" type='number' />
-                <button>Cadastrar</button>
+                <ButtonGlobal text="CADASTRAR" handle={() => { }} />
             </fieldset>
 
             <fieldset className='secao'>
                 <legend>Chassi</legend>
                 <img src="https://www.consultaauto.com.br/wp-content/uploads/2016/06/chassi-chevy-ssr.jpg" alt="chassi" className='image-product' />
                 <TextField id="chassi-basic" label="chassi" variant="outlined" />
-                <button>Cadastrar</button>
+                <ButtonGlobal text="CADASTRAR" handle={() => { }} />
             </fieldset>
             <h1>lista estoque</h1>
             <div className='lista-estoque'>

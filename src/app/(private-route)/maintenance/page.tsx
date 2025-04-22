@@ -5,8 +5,8 @@ import MainMenu from "@/components/mainMenu"
 export default function Maintenance(){
 
     return(
-        <div className="first">
-         
+        <div>
+         <h1>Manutenção</h1>
         </div>
     )
     }

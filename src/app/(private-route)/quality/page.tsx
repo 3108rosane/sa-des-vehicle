@@ -6,7 +6,7 @@ export default function Quality(){
 
     return(
         <div>
-            <MainMenu/>
+           <h1>Qualidade</h1>
         </div>
     )
     }
