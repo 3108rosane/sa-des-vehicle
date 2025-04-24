@@ -29,7 +29,7 @@ export default function Dashboard() {
                 </div>
             </div>
             <div style={{ maxWidth: '600px', margin: '50px auto', marginTop: '32px' }}>
-                <h1>Gráfico de Vendas de Carros</h1>
+                <h1>Gráfico de produção de Carros</h1>
                 <MontadorasBarras />
             </div>
             <div style={{ maxWidth: '600px', margin: '50px auto', marginTop: '32px' }}>
