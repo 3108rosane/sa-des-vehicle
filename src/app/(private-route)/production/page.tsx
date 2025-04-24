@@ -64,7 +64,7 @@ export default function Production() {
                     <form className='form'>
                         <div>
                             <div className='formSeparetor'>
-                                <FormControl sx={{ width: '40%' }}>
+                                <FormControl sx={{ width: '30%' }}>
                                     <InputLabel>Categoria Do carro</InputLabel>
                                     <Select label="selecione a Categoria do carro">
                                         <MenuItem value={10}>Elétrico</MenuItem>
@@ -72,7 +72,7 @@ export default function Production() {
                                     </Select>
                                 </FormControl>
 
-                                <FormControl sx={{ width: '40%' }}>
+                                <FormControl sx={{ width: '30%' }}>
                                     <InputLabel>Selecione o Modelo</InputLabel>
                                     <Select label="Selecione o Modelo">
                                         <MenuItem value={10}>Honda Civic</MenuItem>
@@ -109,7 +109,7 @@ export default function Production() {
                                     </Select>
                                 </FormControl>
 
-                                <TextField label="Quantidade" variant="outlined" type='number' />
+                                <TextField label="Quantidade" variant="outlined" type='number' sx={{ width: '30%' }} />
                             </div>
                         </div>
                         <div className='buttonGroup'>
