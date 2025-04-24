@@ -31,13 +31,9 @@ export default function Dashboard() {
             <div style={{ maxWidth: '600px', margin: '50px auto', marginTop: '32px' }}>
                 <h1>Gráfico de produção de Carros</h1>
                 <MontadorasBarras />
-                <h1>Gráfico de estoque de Carros</h1>
-                <MontadorasBarras />
             </div>
             <div style={{ maxWidth: '600px', margin: '50px auto', marginTop: '32px' }}>
                 <h1>Gráfico de Manutenção de Carros</h1>
-                <MontadorasPizza />
-                <h1>Gráfico de Qualidade de Carros</h1>
                 <MontadorasPizza />
             </div>
 
