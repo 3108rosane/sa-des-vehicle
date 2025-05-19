@@ -1,4 +1,4 @@
-import "./styles.css"
+import styles from './styles.module.css'
 
 type ImgPesonagem = {
     src: string;
@@ -7,6 +7,6 @@ type ImgPesonagem = {
 
 export default function Personagem({src}:ImgPesonagem){
     return(
-        <img src={src} className="Personagem" />
+        <img src={src} className={styles.Personagem} />
     )
 }

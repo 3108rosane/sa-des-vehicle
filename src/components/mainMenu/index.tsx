@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import "./styles.css";
+import styles from './styles.module.css'
 import Personagem from "../ImagemPesonagem";
 import {
   FcSupport,
@@ -29,28 +29,28 @@ export default function MainMenu() {
 
 
   return (
-    <div className="container">
+    <div className={styles.container}>
       <div>
         {/* Perfil */}
-        <div className="profile">
+        <div className={styles.profile}>
           <Personagem src="https://img.freepik.com/vetores-premium/perfil-de-avatar-de-homem-no-icone-redondo_24640-14044.jpg" />
-          <div className="profileInfos">
+          <div className={styles.profileInfos}>
             <strong>fulano</strong>
             <strong>fulano@gmail.com</strong>
           </div>
         </div>
 
         {/* Menu lateral */}
-        <div className="content">
+        <div className={styles.content}>
           {chamadas.map((item) => (
-            <Link key={item.label} className="item" href={item.page}>
+            <Link key={item.label} className={styles.item} href={item.page}>
               {item.icon}
               <span>{item.label}</span>
             </Link>
           ))}
 
           {/* BOTÃO DE SAIR */}
-          <button className="item logout" onClick={handleLogout}>
+          <button  className={styles.item} onClick={handleLogout}>
             <MdLogout />
             <span>Sair</span>
           </button>
@@ -59,7 +59,7 @@ export default function MainMenu() {
         {/* logo */}
         <img
           src="https://img.freepik.com/vetores-gratis/logotipo-do-servico-de-carro-gradiente_23-2149725123.jpg?semt=ais_hybrid&w=740"
-          alt="logo"
+          alt="logo" className={styles.profileImg}
         />
       </div>
     </div>

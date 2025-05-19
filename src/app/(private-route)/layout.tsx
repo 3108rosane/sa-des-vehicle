@@ -1,11 +1,11 @@
-import "./styles.css"
+import styles from './styles.module.css'
 import MainMenu from "@/components/mainMenu";
 
 export default function PrivateLayout({ children }: { children: React.ReactNode}){
     return (
-        <div className="layout">
+        <div className={styles.layout}>
         <MainMenu/>
-        <main className="main">
+        <main className={styles.main}>
             {children}
         </main>
     </div>

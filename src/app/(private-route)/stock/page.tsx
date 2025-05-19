@@ -1,7 +1,7 @@
 "use client";
 
 import { TextField, FormControl, InputLabel, Select, MenuItem, SelectChangeEvent } from "@mui/material";
-import "./styles.css";
+import styles from './styles.module.css'
 import { DataGrid, GridColDef } from "@mui/x-data-grid";
 import { ButtonGlobal } from "@/components/Button";
 import React, { useState } from "react";
@@ -14,8 +14,16 @@ const columns: GridColDef[] = [
   { field: "quantidade", headerName: "Qtd", width: 90 }
 ];
 
+interface LinhaEstoque {
+  id: number;
+  CategoriaDocarro: string;
+  tipo: string;
+  descricao: string;
+  quantidade: number;
+}
+
 export default function Stock() {
-  const [linhasEstoque, setLinhasEstoque] = useState<any[]>([]);
+  const [linhasEstoque, setLinhasEstoque] = useState<LinhaEstoque[]>([]);
 
   const [categoria, setCategoria] = useState("");
   const [motor, setMotor] = useState("");
@@ -30,7 +38,8 @@ export default function Stock() {
   const [chassi, setChassi] = useState("");
   const [chassiQtd, setChassiQtd] = useState(0);
 
-  const nextId = () => linhasEstoque.length + 1;
+  const nextId = () =>
+    linhasEstoque.length === 0 ? 1 : Math.max(...linhasEstoque.map(l => l.id)) + 1;
 
   const resetFields = () => {
     setCategoria("");
@@ -46,45 +55,69 @@ export default function Stock() {
 
   type ItemKind = "motor" | "pneu" | "carcaca" | "chassi";
 
-  const gerarLinhas = (tipo: ItemKind, descricao: string, quantidade: number) =>
-    Array.from({ length: quantidade }, (_, i) => ({
-      id: nextId() + i,
-      CategoriaDocarro: tipo === "motor" ? categoria : "-",
-      tipo,
-      descricao,
-      quantidade: 1 // cada linha representa uma unidade
-    }));
+  const criarOuIncrementarItem = (
+    tipo: ItemKind,
+    descricao: string,
+    quantidade: number,
+    categoriaDocarro: string = "-"
+  ) => {
+    setLinhasEstoque(prev => {
+      // Procura um item igual (mesmo tipo, descrição e categoria)
+      const indiceExistente = prev.findIndex(
+        l => l.tipo === tipo && l.descricao === descricao && l.CategoriaDocarro === categoriaDocarro
+      );
+
+      // Se existir, apenas incrementa a quantidade
+      if (indiceExistente !== -1) {
+        const copia = [...prev];
+        copia[indiceExistente] = {
+          ...copia[indiceExistente],
+          quantidade: copia[indiceExistente].quantidade + quantidade
+        };
+        return copia;
+      }
+
+      // Caso contrário, cria uma nova linha
+      return [
+        ...prev,
+        {
+          id: nextId(),
+          CategoriaDocarro: categoriaDocarro,
+          tipo,
+          descricao,
+          quantidade
+        }
+      ];
+    });
+  };
 
   const cadastrarItem = (tipo: ItemKind) => {
-    let linhasNovas: any[] = [];
-
     if (tipo === "motor") {
       if (!categoria || !motor || motorQtd <= 0) return alert("Preencha categoria, motor e quantidade");
-      linhasNovas = gerarLinhas("motor", motor, motorQtd);
+      criarOuIncrementarItem("motor", motor, motorQtd, categoria);
     }
     if (tipo === "pneu") {
       if (!pneu || pneuQtd <= 0) return alert("Preencha pneu e quantidade");
-      linhasNovas = gerarLinhas("pneu", pneu, pneuQtd);
+      criarOuIncrementarItem("pneu", pneu, pneuQtd);
     }
     if (tipo === "carcaca") {
       if (!carcaca || carcacaQtd <= 0) return alert("Preencha carcaça e quantidade");
-      linhasNovas = gerarLinhas("carcaca", carcaca, carcacaQtd);
+      criarOuIncrementarItem("carcaca", carcaca, carcacaQtd);
     }
     if (tipo === "chassi") {
       if (!chassi || chassiQtd <= 0) return alert("Preencha chassi e quantidade");
-      linhasNovas = gerarLinhas("chassi", chassi, chassiQtd);
+      criarOuIncrementarItem("chassi", chassi, chassiQtd);
     }
 
-    setLinhasEstoque(prev => [...prev, ...linhasNovas]);
     resetFields();
   };
 
   return (
-    <div className="header-stock">
+    <div className={styles.headerStock}>
       <h1>Estoque</h1>
 
       {/* Categoria (apenas para motor) */}
-      <div className="main-stock">
+      <div className={styles.mainStock}>
         <FormControl sx={{ width: "20%" }}>
           <InputLabel>Categoria do carro</InputLabel>
           <Select value={categoria} onChange={(e: SelectChangeEvent) => setCategoria(e.target.value)} label="Categoria do carro">
@@ -95,9 +128,9 @@ export default function Stock() {
       </div>
 
       {/* Motor */}
-      <fieldset className="secao">
+      <fieldset className={styles.secao}>
         <legend>Motor</legend>
-        <img src="https://cdn.autopapo.com.br/box/uploads/2018/11/22152231/motor-carro-novo-shutterstock-732x488.jpg" alt="motor" className='image-product' />
+        <img src="https://cdn.autopapo.com.br/box/uploads/2018/11/22152231/motor-carro-novo-shutterstock-732x488.jpg" alt="motor" className={styles.imageProduct} />
         <FormControl sx={{ width: "120px" }}>
           <InputLabel>Motor</InputLabel>
           <Select value={motor} onChange={(e: SelectChangeEvent) => setMotor(e.target.value)} label="Motor">
@@ -111,9 +144,9 @@ export default function Stock() {
       </fieldset>
 
       {/* Pneu */}
-      <fieldset className="secao">
+      <fieldset className={styles.secao}>
         <legend>Pneu</legend>
-        <img src="https://a-static.mlcdn.com.br/800x560/pneu-pirelli-aro-20-pzero-245-45r20-103y-xl-original-chevrolet-camaro/pneustore/10070001/b7dc4aae41f54f7df27a298ab92475ec.jpeg" alt="pneu" className='image-product' />
+        <img src="https://a-static.mlcdn.com.br/800x560/pneu-pirelli-aro-20-pzero-245-45r20-103y-xl-original-chevrolet-camaro/pneustore/10070001/b7dc4aae41f54f7df27a298ab92475ec.jpeg" alt="pneu" className={styles.imageProduct} />
         <FormControl sx={{ width: "120px" }}>
           <InputLabel>Pneu</InputLabel>
           <Select value={pneu} onChange={(e: SelectChangeEvent) => setPneu(e.target.value)} label="Pneu">
@@ -126,9 +159,9 @@ export default function Stock() {
       </fieldset>
 
       {/* Carcaça */}
-      <fieldset className="secao">
+      <fieldset className={styles.secao}>
         <legend>Carcaça</legend>
-        <img src="https://www.karvi.com.br/blog/wp-content/uploads/2021/02/Tipos-de-carrocerias-850x459.jpg" alt="carcaca" className='image-product' />
+        <img src="https://www.karvi.com.br/blog/wp-content/uploads/2021/02/Tipos-de-carrocerias-850x459.jpg" alt="carcaca" className={styles.imageProduct} />
         <FormControl sx={{ width: "120px" }}>
           <InputLabel>Carcaça</InputLabel>
           <Select value={carcaca} onChange={(e: SelectChangeEvent) => setCarcaca(e.target.value)} label="Carcaça">
@@ -143,9 +176,9 @@ export default function Stock() {
       </fieldset>
 
       {/* Chassi */}
-      <fieldset className="secao">
+      <fieldset className={styles.secao}>
         <legend>Chassi</legend>
-        <img src="https://www.consultaauto.com.br/wp-content/uploads/2016/06/chassi-chevy-ssr.jpg" alt="chassi" className='image-product' />
+        <img src="https://www.consultaauto.com.br/wp-content/uploads/2016/06/chassi-chevy-ssr.jpg" alt="chassi" className={styles.imageProduct} />
         <TextField label="Chassi" value={chassi} onChange={e => setChassi(e.target.value)} sx={{ width: 120 }} />
         <TextField label="Quantidade" type="number" value={chassiQtd} onChange={e => setChassiQtd(Number(e.target.value))} sx={{ width: 120, ml: 2 }} />
         <ButtonGlobal text="CADASTRAR" handle={() => cadastrarItem("chassi")} />
