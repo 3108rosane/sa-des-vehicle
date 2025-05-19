@@ -1,9 +1,13 @@
+
 "use client";
-import "./style.css";
+
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import styles from "./styles.module.css";
+import { TextField, Button } from "@mui/material";
 
-export default function Home() {
+export default function Login() {
+
   const router = useRouter();
   // const para set senha password e erros
   const [email, setEmail] = useState<string>("");
@@ -12,7 +16,8 @@ export default function Home() {
 
   const disabledButton = !email || password.length === 0;
   // const para verificar senha 
-  const handleLogin = () => {
+  const handleLogin = (e?: React.FormEvent) => {
+    if (e) e.preventDefault(); // impede reload do formulário
     if (email === "adm" && password === "123") {
       // ajuste para a rota pós‑login
       router.push("/dashboard");
@@ -22,32 +27,38 @@ export default function Home() {
   };
 
   return (
-    <div className="container">
-      <div className="form">
-        <img
-          src="https://png.pngtree.com/png-vector/20190919/ourmid/pngtree-user-login-or-authenticate-icon-on-gray-background-flat-icon-ve-png-image_1742031.jpg"
-          className="imagem"
-          alt="imagem"
-        />
-        <h1>Página de login</h1>
-        <input
-          className="input"
-          placeholder="E-mail"
-          type="text"
-          value={email}
-          onChange={event => setEmail(event.target.value)}
-        />
-        <input
-          className="input"
-          placeholder="Password"
-          type="password"
-          value={password}
-          onChange={event => setPassword(event.target.value)}
-        />
-        {error && <span className="error">{error}</span>}
-        <button className="button" onClick={handleLogin} disabled={disabledButton}>
-          Entrar
-        </button>
+    <div className={styles.background}>
+      <div className={styles.container}>
+        <h1 className={styles.title}>Login</h1>
+        {/* Tornamos o formulário responsável pelo Enter */}
+        <form className={styles.form} onSubmit={handleLogin}>
+          <TextField
+            fullWidth
+            label="Email"
+            type="email"
+            size="small"
+            margin="normal"
+            onChange={event => setEmail(event.target.value)}
+          />
+          <TextField
+            fullWidth
+            label="Password"
+            type="password"
+            size="small"
+            margin="normal"
+            onChange={event => setPassword(event.target.value)}
+          />
+          <Button
+            variant="contained"
+            color="primary"
+            fullWidth
+            type="submit" // botão passa a ser "submit"
+            style={{ marginTop: "16px" }}
+            onClick={handleLogin} disabled={disabledButton}
+          >
+            Entrar
+          </Button>
+        </form>
       </div>
     </div>
   );

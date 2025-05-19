@@ -78,9 +78,9 @@
     margin-bottom: 40px;
 }
 
-.profile img {
-    width: 60px;
-    height: 60px;
+.profileImg {
+   width:250px;
+    height: 120px;
     border-radius: 50%;
     margin-right: 16px;
 }
@@ -93,42 +93,7 @@
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     font-weight: 300;
 }
-img{
+.img{
     width:250px;
     height: 120px;
 }
-/* .first {
-    background-color: red;
-    display: flex;
-    padding: 64px;
-    flex-direction: column;
-    height: 100vh;
-    row-gap: 18px;
-    width: 22%;
-}
-
-.second {
-    display: flex;
-    width: 70px;
-    border-radius: 8px;
-    padding: 8px;
-    margin: 0%;
-    flex-direction: row;
-    margin-bottom: 32px;
-}
-
-.third {
-    align-items: center;
-    padding: 16px;
-    color: black;
-    height: 50px;
-}
-
-.four {
-    flex-direction: column;
-    display: flex;
-    color: black;
-    height: 10vh;
-    width: 40%;
-
-} */

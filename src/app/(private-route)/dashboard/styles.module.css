@@ -1,18 +1,18 @@
-.menu-container-dashboard {
+.menuContainerDashboard {
     text-align: center;
     display: flex;
     flex: 1;
     flex-direction: column;
 }
 
-.menu-dashboard {
+.menuDashboard {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     margin-top: 20px;
     gap: 16px;
 }
 
-.menu-item-dashboard {
+.menuItemDashboard {
     background-color: #ccc;
     border-radius: 50%;
     height: 250px;
@@ -23,7 +23,7 @@
     justify-content: center;
 }
 
-.menu-item-dashboard svg {
+.menuItemDashboard svg {
     width: 32px;
     height: 32px;
 }

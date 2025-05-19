@@ -1,7 +1,7 @@
 "use client";
 
 import { ButtonGlobal } from "@/components/Button";
-import "./styles.css";
+import styles from './styles.module.css'
 import { DataGrid, GridColDef } from "@mui/x-data-grid";
 import { FormControl, InputLabel, MenuItem, Select, SelectChangeEvent, TextField } from "@mui/material";
 import React, { useState } from "react";
@@ -67,13 +67,13 @@ export default function Production() {
     };
 
     return (
-        <div className="containerProduction">
+        <div className={styles.containerProduction}>
             <h1>Produção</h1>
 
-            <div className="contentProduction">
+            <div className={styles.contentProduction}>
                 <h2>Novo Veículo</h2>
-                <form className="form" onSubmit={e => e.preventDefault()}>
-                    <div className="formSeparetor">
+                <form className={styles.form} onSubmit={e => e.preventDefault()}>
+                    <div className={styles.formSeparetor}>
                         <FormControl sx={{ width: "30%", mb: 2 }}>
                             <InputLabel>Categoria</InputLabel>
                             <Select value={categoria} onChange={(e: SelectChangeEvent) => setCategoria(e.target.value)} label="Categoria">
@@ -123,14 +123,14 @@ export default function Production() {
 
                         <TextField label="Quantidade" type="number" value={quantidade} onChange={e => setQuantidade(Number(e.target.value))} sx={{ width: "30%", mb: 2 }} />
                     </div>
-                    <div className="buttonGroup">
+                    <div className={styles.buttonGroup}>
                         <ButtonGlobal text="Enviar para Produção" handle={handleSubmit} />
                     </div>
                 </form>
             </div>
 
             <h1>Últimos 5 produzidos</h1>
-            <div className="datagrid">
+            <div className={styles.datagrid}>
                 <DataGrid rows={linhasEstoque} columns={columns} autoHeight hideFooter disableRowSelectionOnClick />
             </div>
         </div>

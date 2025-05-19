@@ -1,4 +1,4 @@
-import "./styles.css"
+import styles from './styles.module.css'
 
 type ButtonProps = {
     text: string;
@@ -8,10 +8,10 @@ type ButtonProps = {
 
 export function ButtonGlobal({ text, handle, disabled = false }: ButtonProps) {
     return (
-        <button 
+        <button
             onClick={handle}
             disabled={disabled}
-            className='button'
+            className={styles.button}
         >
             {text}
         </button>
