@@ -121,7 +121,7 @@ export default function Production() {
                             </Select>
                         </FormControl>
 
-                        <TextField label="Quantidade" type="number" value={quantidade} onChange={e => setQuantidade(Number(e.target.value))} sx={{ width: "30%", mb: 2 }} />
+                        {/* <TextField label="Quantidade" type="number" value={quantidade} onChange={e => setQuantidade(Number(e.target.value))} sx={{ width: "30%", mb: 2 }} /> */}
                     </div>
                     <div className={styles.buttonGroup}>
                         <ButtonGlobal text="Enviar para Produção" handle={handleSubmit} />
