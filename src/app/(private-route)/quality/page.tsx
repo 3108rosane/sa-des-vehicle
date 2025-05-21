@@ -1,7 +1,6 @@
 
 "use client";
 
-import { ButtonGlobal } from "@/components/Button";
 import styles from './styles.module.css';
 import { DataGrid, GridColDef } from "@mui/x-data-grid";
 import { TextField, Select, MenuItem, FormControl, InputLabel, Checkbox, FormControlLabel, Chip } from "@mui/material";
@@ -14,12 +13,12 @@ const columns: GridColDef[] = [
   { field: "responsavel", headerName: "Responsável", width: 150 },
   {
     field: "status", headerName: "Status", width: 130, renderCell: (params) => {
-      const value = params.value; let color = "default";
+      const value = params.value;
+      let color = "default" as any;
       if (value === "Aprovado") color = "success";
       else if (value === "Reprovado") color = "error";
       else if (value === "Pendente") color = "warning";
-      return ""
-      // <Chip label={value} color={color} variant="outlined" />;
+      return <Chip label={value} color={color} variant="outlined" />;
     }
   },
 ];
@@ -56,7 +55,6 @@ export default function Quality() {
           </Select>
         </FormControl>
         <TextField label="Responsável" size="small" value={responsavel} onChange={(e) => setResponsavel(e.target.value)} />
-        {/* <ButtonGlobal label="Adicionar inspeção" /> */}
       </div>
       <div style={{ height: 400, width: "100%" }}>
         <DataGrid rows={rows} columns={columns} />
