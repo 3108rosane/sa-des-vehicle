@@ -165,10 +165,10 @@ export default function Stock() {
         <FormControl sx={{ width: "120px" }}>
           <InputLabel>Carcaça</InputLabel>
           <Select value={carcaca} onChange={(e: SelectChangeEvent) => setCarcaca(e.target.value)} label="Carcaça">
-            <MenuItem value="chevrolet">chevrolet</MenuItem>
-            <MenuItem value="fiat">fiat</MenuItem>
-            <MenuItem value="ford">ford</MenuItem>
-            <MenuItem value="kia">kia</MenuItem>
+            <MenuItem value="Honda Civic">Honda Civic</MenuItem>
+            <MenuItem value="Toyota Corolla">Toyota Corolla</MenuItem>
+            <MenuItem value="Volkswagen Golf">Volkswagen Golf</MenuItem>
+            <MenuItem value="Chevrolet Onix">Chevrolet Onix</MenuItem>
           </Select>
         </FormControl>
         <TextField label="Quantidade" type="number" value={carcacaQtd} onChange={e => setCarcacaQtd(Number(e.target.value))} sx={{ width: 120, ml: 2 }} />
