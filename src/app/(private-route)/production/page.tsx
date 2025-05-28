@@ -13,7 +13,8 @@ const columns: GridColDef[] = [
     { field: "ano", headerName: "Ano", width: 90 },
     { field: "color", headerName: "Cor", width: 100 },
     { field: "motor", headerName: "Motor", width: 80 },
-    { field: "pneu", headerName: "Pneu", width: 120 }
+    { field: "pneu", headerName: "Pneu", width: 120 },
+    { field: "responsavel", headerName: "Responsável", width: 150 },
 ];
 
 export default function Production() {
@@ -23,6 +24,7 @@ export default function Production() {
     const [motor, setMotor] = useState<number | "">("");
     const [pneu, setPneu] = useState("");
     const [quantidade, setQuantidade] = useState<number | "">("");
+    const [responsavel, setResponsavel] = useState("");
 
     // começa vazia
     const [linhasEstoque, setLinhasEstoque] = useState<any[]>([]);
@@ -34,6 +36,7 @@ export default function Production() {
         setMotor("");
         setPneu("");
         setQuantidade("");
+        setResponsavel("");
     };
 
     const proximoId = () => (linhasEstoque[linhasEstoque.length - 1]?.id || 0) + 1;
@@ -122,12 +125,14 @@ export default function Production() {
                         </FormControl>
 
                         <TextField label="Quantidade" type="number" value={quantidade} onChange={e => setQuantidade(Number(e.target.value))} sx={{ width: "30%", mb: 2 }} />
+                        <TextField label="Responsável" value={responsavel} onChange={e => setResponsavel(e.target.value)} sx={{ width: "30%", mb: 2 }} />
                     </div>
                     <div className={styles.buttonGroup}>
                         <ButtonGlobal text="Enviar para Produção" handle={handleSubmit} />
                     </div>
                 </form>
             </div>
+
 
             <h1>Últimos 5 produzidos</h1>
             <div className={styles.datagrid}>
